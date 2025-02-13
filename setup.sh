@@ -33,7 +33,7 @@ else
 fi
 
 # Install ripgrep if not installed
-if ! command_exists ripgrep; then
+if ! command_exists rg; then
     echo "Installing ripgrep..."
     brew install ripgrep
 else
@@ -66,31 +66,35 @@ fi
 
 echo "Installation process completed."
 
+# Remove existing Neovim config directory if it's a folder
+rm -rf ~/.config/nvim
+
 # Create symlinks for configuration files
 DOTFILES_DIR=$(cd "$(dirname "$0")" && pwd)
-ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
-ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
-ln -sf "$DOTFILES_DIR/.tmux.conf" ~/.tmux.conf
-ln -sf "$DOTFILES_DIR/iterm/com.googlecode.iterm2.plist" ~/Library/Preferences/com.googlecode.iterm2.plist
-ln -sf "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+ln -s "$DOTFILES_DIR/nvim" ~/.config/nvim
+ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$DOTFILES_DIR/iterm/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
 echo "Symlinks created"
 
-# Set Neovim as the default editor for Git
-git config --global core.editor "nvim"
-
 # Clone repositories if not already cloned
 REPOS=(
-    "https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-    "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-    "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-    "git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search"
+    "https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
+    "https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    "https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    "https://github.com/joshskidmore/zsh-fzf-history-search $HOME/.oh-my-zsh/custom/plugins/zsh-fzf-history-search"
 )
 
 for repo in "${REPOS[@]}"; do
-    URL=$(echo $repo | awk '{print $1}')
-    DIR=$(echo $repo | awk '{print $2}')
-    if [ ! -d "$DIR" ]; then
+    read -r URL DIR <<< "$repo"
+
+    # Ensure the parent directory exists
+    PARENT_DIR=$(dirname "$DIR")
+    mkdir -p "$PARENT_DIR"
+
+    if [ ! -d "$DIR/.git" ]; then
         echo "Cloning $URL into $DIR..."
         git clone "$URL" "$DIR"
     else
