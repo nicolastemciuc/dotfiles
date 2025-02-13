@@ -135,3 +135,6 @@ add-zsh-hook chpwd set_latest_ruby
 
 # Also call it for the initial shell
 set_latest_ruby
+
+export EDITOR='nvim'
+export VISUAL='nvim'
