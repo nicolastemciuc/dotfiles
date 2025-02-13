@@ -49,7 +49,7 @@ else
 fi
 
 # Install iTerm2 if not installed
-if ! command_exists iterm2; then
+if [ ! -d "$HOME/Library/Application Support/iTerm2" ]; then
     echo "Installing iTerm2..."
     brew install --cask iterm2
 else
@@ -62,6 +62,13 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
     echo "Oh My Zsh is already installed."
+fi
+
+if [ ! -f "$HOME/Library/Fonts/CaskaydiaCoveNerdFont-Bold.ttf" ]; then
+  echo "Installing Font..."
+  brew install --cask font-caskaydia-cove-nerd-font
+else
+  echo "Font is already installed."
 fi
 
 echo "Installation process completed."
