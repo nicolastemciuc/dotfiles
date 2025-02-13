@@ -5,3 +5,5 @@
         ls-conflicts = !git ls-files --unmerged | cut -f2 | uniq
         edit-conflicts = "!vim -p `git ls-conflicts`"
         add-conflicts = !git add `git ls-conflicts`
+[core]
+	editor = nvim
