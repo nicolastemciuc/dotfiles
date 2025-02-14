@@ -42,6 +42,7 @@ return {
     words = { enabled = true },
   },
   keys = {
+    { "<leader>p",        function() Snacks.picker() end,             desc = "Show all pickers" },
     { "<leader>sf",       function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
     { "<leader>S",        function() Snacks.scratch.select() end,     desc = "Select Scratch Buffer" },
     { "<C-p>",
@@ -67,6 +68,7 @@ return {
       desc = "Grep Files"
     },
     { "<C-n>",            function() Snacks.explorer() end,           desc = "Explorer" },
+    { "<leader>q",        function() Snacks.picker.qflist() end,      desc = "Open Quickfix list" },
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
