@@ -81,7 +81,7 @@ DOTFILES_DIR=$(cd "$(dirname "$0")" && pwd)
 ln -s "$DOTFILES_DIR/nvim" ~/.config/nvim
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$DOTFILES_DIR/iterm/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+ln -sf "$DOTFILES_DIR/iterm/iterm2profile.json" "$HOME/Library/Application Support/iterm2/DynamicProfiles/iterm2profile.json"
 ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 
 echo "Symlinks created"

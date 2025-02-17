@@ -105,7 +105,7 @@
     "Alpha Component" : 1,
     "Green Component" : 1
   },
-  "Scrollback Lines" : 1000,
+  "Scrollback Lines" : 0,
   "Selection Color (Light)" : {
     "Red Component" : 0.67450980392156867,
     "Color Space" : "sRGB",
@@ -150,7 +150,7 @@
   },
   "Silence Bell" : false,
   "Rows" : 25,
-  "Guid" : "729D91D1-1BE5-4EE5-9263-6145FB97ECC4",
+  "Guid" : "537250B5-0754-49E7-8641-BCB3334EC270",
   "Ansi 14 Color (Dark)" : {
     "Red Component" : 0.58039215686274515,
     "Color Space" : "sRGB",
@@ -342,7 +342,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.23660069704055786
   },
-  "Name" : "Nicolas",
+  "Name" : "nicolas_temciuc",
   "Transparency" : 0,
   "Horizontal Spacing" : 1,
   "Cursor Color (Dark)" : {
@@ -477,6 +477,7 @@
   "Tags" : [
 
   ],
+  "Set Local Environment Vars" : 2,
   "Ansi 6 Color (Light)" : {
     "Red Component" : 0.090196078431372548,
     "Color Space" : "sRGB",
@@ -492,6 +493,7 @@
     "Green Component" : 0.98600882291793823
   },
   "Background Image Location" : "",
+  "Custom Locale" : "en_AU.UTF-8",
   "Ansi 1 Color (Light)" : {
     "Red Component" : 0.82352941176470584,
     "Color Space" : "sRGB",
