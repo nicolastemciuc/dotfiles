@@ -24,7 +24,7 @@ return {
     },
     indent = { enabled = true },
     input = { enabled = true },
-    git = { enabled = true },
+    notifier = { enabled = true },
     picker = {
       enabled = true,
       win = {
@@ -35,7 +35,6 @@ return {
         }
       },
     },
-    notifier = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
@@ -43,8 +42,6 @@ return {
   },
   keys = {
     { "<leader>p",        function() Snacks.picker() end,             desc = "Show all pickers" },
-    { "<leader>sf",       function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
-    { "<leader>S",        function() Snacks.scratch.select() end,     desc = "Select Scratch Buffer" },
     { "<C-p>",
       function()
         Snacks.picker.files({
@@ -62,7 +59,8 @@ return {
         Snacks.picker.grep({
           hidden = true,
           ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/" }
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/" },
+          cwd = vim.fn.getcwd() -- Explicitly set the cwd to the current working directory
         })
       end,
       desc = "Grep Files"
