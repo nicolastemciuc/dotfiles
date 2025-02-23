@@ -1,5 +1,11 @@
 return {
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.api.nvim_set_keymap('n', 'gl', ':Git blame<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', 'gb', ':GBrowse<CR>', { noremap = true, silent = true })
+    end
+  },
   "tpope/vim-rhubarb",
   "tpope/vim-surround",
   "tpope/vim-repeat",
