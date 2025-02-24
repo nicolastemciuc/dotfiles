@@ -1,9 +1,13 @@
-[user]
-	name = Nicolas Temciuc
-	email = nicotemciuc@gmail.com
+[includeIf "gitdir:~/personal/"]
+        path = .gitconfig-personal
+[includeIf "gitdir:~/airbnb/"]
+        path = .gitconfig-airbnb
+[includeIf "gitdir:~/cedar/"]
+        path = .gitconfig-cedar
+
 [alias]
         ls-conflicts = !git ls-files --unmerged | cut -f2 | uniq
         edit-conflicts = "!vim -p `git ls-conflicts`"
         add-conflicts = !git add `git ls-conflicts`
 [core]
-	editor = nvim
+  editor = nvim

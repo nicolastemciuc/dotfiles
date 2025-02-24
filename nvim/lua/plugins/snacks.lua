@@ -21,8 +21,7 @@ return {
  ██████  █████████████████████ ████ █████ █████ ████ ██████ 
         ]],
       },
-    },
-    indent = { enabled = true },
+    }, indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
     picker = {
@@ -47,7 +46,7 @@ return {
         Snacks.picker.files({
           hidden = true,
           ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/" }
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
         })
       end,
       desc = "Find Files"
@@ -59,7 +58,7 @@ return {
         Snacks.picker.grep({
           hidden = true,
           ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/" },
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
           cwd = vim.fn.getcwd() -- Explicitly set the cwd to the current working directory
         })
       end,

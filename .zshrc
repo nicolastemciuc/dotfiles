@@ -138,3 +138,16 @@ set_latest_ruby
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+
+_tmux() {
+    if [[ $# -eq 0 ]] && command tmux ls &>/dev/null; then
+        command tmux attach \; choose-tree -s
+    else
+        command tmux "$@"
+    fi
+}
+
+alias tmux=_tmux
+
+export GITHUB_ENTERPRISE_URL="git.musta.ch"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
