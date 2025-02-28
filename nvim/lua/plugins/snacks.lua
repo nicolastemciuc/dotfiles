@@ -64,6 +64,18 @@ return {
       end,
       desc = "Grep Files"
     },
+    { "<leader>fw",
+      function()
+        Snacks.picker.grep({
+          hidden = true,
+          ignored = true,
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
+          search = vim.fn.expand("<cword>"),
+          cwd = vim.fn.getcwd() -- Explicitly set the cwd to the current working directory
+        })
+      end,
+      desc = "Grep word under cursor"
+    },
     { "<C-n>",            function() Snacks.explorer() end,           desc = "Explorer" },
     { "<leader>q",        function() Snacks.picker.qflist() end,      desc = "Open Quickfix list" },
     -- git
