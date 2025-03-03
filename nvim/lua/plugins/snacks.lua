@@ -78,6 +78,20 @@ return {
     },
     { "<C-n>",            function() Snacks.explorer() end,           desc = "Explorer" },
     { "<leader>q",        function() Snacks.picker.qflist() end,      desc = "Open Quickfix list" },
+
+    -- Rails specific keymaps
+    { "<leader>rv", function() Snacks.picker.files({ cwd = "app/views" }) end, desc = "Rails Views" },
+    { "<leader>rm", function() Snacks.picker.files({ cwd = "app/models" }) end, desc = "Rails Models" },
+    { "<leader>rc", function() Snacks.picker.files({ cwd = "app/controllers" }) end, desc = "Rails Controllers" },
+    { "<leader>rh", function() Snacks.picker.files({ cwd = "app/helpers" }) end, desc = "Rails Helpers" },
+    { "<leader>rl", function() Snacks.picker.files({ cwd = "app/lib" }) end, desc = "Rails Lib" },
+    { "<leader>rs", function() Snacks.picker.files({ cwd = "spec" }) end, desc = "Rails Spec" },
+    { "<leader>rj", function() Snacks.picker.files({ cwd = "app/javascript" }) end, desc = "Rails JavaScript" },
+    { "<leader>rf", function() Snacks.picker.files({ cwd = "config" }) end, desc = "Rails Config" },
+    { "<leader>rd", function() Snacks.picker.files({ cwd = "db" }) end, desc = "Rails Database" },
+    { "<leader>rt", function() Snacks.picker.files({ cwd = "test" }) end, desc = "Rails Tests" },
+    { "<leader>ri", function() Snacks.picker.files({ cwd = "config/initializers" }) end, desc = "Rails Initializers" },
+
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
@@ -86,6 +100,7 @@ return {
     { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
     { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+
     -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
     { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
