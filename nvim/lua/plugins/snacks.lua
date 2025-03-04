@@ -1,3 +1,19 @@
+local function grep_dir(key, dir, desc)
+  return {
+    key,
+    function()
+      local path = vim.fn.fnamemodify(vim.fn.getcwd() .. "/" .. dir, ":p")
+      Snacks.picker.grep({
+        cwd = path,
+        hidden = true,
+        ignored = true,
+        exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
+      })
+    end,
+    desc = "Grep in " .. desc
+  }
+end
+
 return {
   "folke/snacks.nvim",
   dependencies = {
@@ -53,17 +69,7 @@ return {
     },
     { "<leader><leader>", function() Snacks.picker.recent() end,      desc = "Recent Files" },
     { "<leader>fb",       function() Snacks.picker.buffers() end,     desc = "Buffers" },
-    { "<leader>fg",
-      function()
-        Snacks.picker.grep({
-          hidden = true,
-          ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
-          cwd = vim.fn.getcwd() -- Explicitly set the cwd to the current working directory
-        })
-      end,
-      desc = "Grep Files"
-    },
+    grep_dir("<leader>fg", "", "Current Directory"),
     { "<leader>fw",
       function()
         Snacks.picker.grep({
@@ -91,6 +97,18 @@ return {
     { "<leader>rd", function() Snacks.picker.files({ cwd = "db" }) end, desc = "Rails Database" },
     { "<leader>rt", function() Snacks.picker.files({ cwd = "test" }) end, desc = "Rails Tests" },
     { "<leader>ri", function() Snacks.picker.files({ cwd = "config/initializers" }) end, desc = "Rails Initializers" },
+    -- Rails Grep
+    grep_dir("<leader>rgv", "app/views", "Grep Views"),
+    grep_dir("<leader>rgm", "app/models", "Grep Models"),
+    grep_dir("<leader>rgc", "app/controllers", "Grep Controllers"),
+    grep_dir("<leader>rgh", "app/helpers", "Grep Helpers"),
+    grep_dir("<leader>rgl", "app/lib", "Grep Lib"),
+    grep_dir("<leader>rgs", "spec", "Grep Spec"),
+    grep_dir("<leader>rgj", "app/javascript", "Grep JavaScript"),
+    grep_dir("<leader>rgf", "config", "Grep Config"),
+    grep_dir("<leader>rgd", "db", "Grep Database"),
+    grep_dir("<leader>rgt", "test", "Grep Tests"),
+    grep_dir("<leader>rgi", "config/initializers", "Grep Initializers"),
 
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
