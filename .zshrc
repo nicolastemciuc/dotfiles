@@ -149,5 +149,7 @@ _tmux() {
 
 alias tmux=_tmux
 
+alias buc= 'bundle update --conservative'
+
 export GITHUB_ENTERPRISE_URL="git.musta.ch"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
