@@ -97,6 +97,8 @@ return {
     { "<leader>rd", function() Snacks.picker.files({ cwd = "db" }) end, desc = "Rails Database" },
     { "<leader>rt", function() Snacks.picker.files({ cwd = "test" }) end, desc = "Rails Tests" },
     { "<leader>ri", function() Snacks.picker.files({ cwd = "config/initializers" }) end, desc = "Rails Initializers" },
+    { "<leader>og", function() vim.cmd(":e Gemfile") end, desc = "Open Gemfile" },
+    { "<leader>ol", function() vim.cmd(":e Gemfile.lock") end, desc = "Open Gemfile.lock" },
     -- Rails Grep
     grep_dir("<leader>rV", "app/views", "Grep Views"),
     grep_dir("<leader>rM", "app/models", "Grep Models"),
