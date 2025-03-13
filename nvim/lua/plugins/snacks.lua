@@ -7,7 +7,7 @@ local function grep_dir(key, dir, desc)
         cwd = path,
         hidden = true,
         ignored = true,
-        exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
+        exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/", "vendor/" },
       })
     end,
     desc = "Grep in " .. desc
@@ -62,7 +62,7 @@ return {
         Snacks.picker.files({
           hidden = true,
           ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/", "vendor/" },
         })
       end,
       desc = "Find Files"
@@ -75,7 +75,7 @@ return {
         Snacks.picker.grep({
           hidden = true,
           ignored = true,
-          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/" },
+          exclude = { ".git/", ".ruby-lsp/", "tmp/", "coverage/", "log/", "sorbet/", ".bundle/", "vendor/" },
           search = vim.fn.expand("<cword>"),
           cwd = vim.fn.getcwd() -- Explicitly set the cwd to the current working directory
         })
